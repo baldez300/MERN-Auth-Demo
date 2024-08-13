@@ -68,7 +68,7 @@ cd MERN-Auth-Demo
 
 ### 1. Project Initialization
 
-Create a new Node.js project using `npm init -y`:
+Create a new Node.js project using the following commands:
 
 ```bash
 cd backend
@@ -77,12 +77,15 @@ npm init -y
 
 npm install express mongoose dotenv bcryptjs jsonwebtoken cors
 ```
-We'll also install nodemon for easier development:
+We'll also install `nodemon` for easier development, it will automatically restart the server when changes are made in the backend code:
     
 ```bash
+cd backend
+
 npm install --save-dev nodemon
 ```
-Add this nodemon script to package.json:
+Add this nodemon script to `package.json` by replacing the one in the `scripts` section:
+
 ```json
 "scripts": {
     "start": "node server.js",
@@ -98,30 +101,40 @@ cd backend
 
 npm install swagger-jsdoc swagger-ui-express
 ```
+OR for specifically latest `swagger-jsdoc` and `swagger-ui-express`, use:
+```bash
+npm install swagger-jsdoc@latest swagger-ui-express@latest
+```
+
 ## 2. Connecting to MongoDB
 
-Create a `.env` file in the backend directory to store environment variables. Add the `.env` file to the `.gitignore` file to keep it private. In MONGO_URI change `password` with your real PASSWORD. Add the following variables to the `.env` file:
+Create a `.env` file in the backend directory to store environment variables. If not added yet, add the `.env` file to the `.gitignore` file to keep it private. In MONGO_URI change `username` and `password` with your real USERNAME and PASSWORD.
+To find your `MONGO_URI`, go to your MongoDB dashboard and click on `Connect` to get the connection string.
+
+Add the following variables to the `.env` file:
 
 ```bash
 MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/myTestDB?retryWrites=true&w=majority
 
 JWT_SECRET=your_jwt_secret
 ```
-Here is how you can generate your JWT secret in VS Code terminal:
+Here is how you can generate your JWT secret in VS Code `terminal` run the following command:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
-On a Windows machine terminal, you can use the following command as well:
+On a Windows machine `terminal`, you can use the following command as well:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
-On a Mac terminal, you can use the following command:
+On a Mac `terminal`, you can use the following command:
 
 ```bash
 openssl rand -base64 64
 ```
+Then, copy the generated secret and paste it in the `.env` file for the variable `JWT_SECRET`.
+
 ### 3. Running the Server
 To start the backend server, run:
 
@@ -136,10 +149,12 @@ The server will start on http://localhost:5001. You can test the API endpoints u
 
 ### 1. Setting Up React
 
-React UI project open a new terminal and navigate to the frontend directory:
+React UI project open a new `terminal` and navigate to the frontend directory:
 
 ```bash
 cd frontend
+
+npm install
 
 npm install axios react-router-dom i18next react-i18next
 ```
