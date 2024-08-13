@@ -157,7 +157,7 @@ Run the following command to start the React app in the frontend directory termi
 npm start
 ```
 
-# Resolving Webpack Warning for `babel-preset-react-app`
+### Resolving Webpack Warning for `babel-preset-react-app`
 
 If you encounter a warning related to `babel-preset-react-app` and `@babel/plugin-proposal-private-property-in-object`, follow these steps to resolve it:
 
