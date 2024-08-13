@@ -43,8 +43,8 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (v18.17.0 or higher)
 - [npm](https://www.npmjs.com/) (v9.6.6 or higher)
 - [MongoDB](https://www.mongodb.com/) (local or Atlas)
-- [Git](https://git-scm.com/)
-- [Postman](https://www.postman.com/) (for testing API endpoints)
+- [Git](https://git-scm.com/) (for version control)
+- [Postman](https://www.postman.com/) (Optional: for testing API endpoints)
 
 Verify installation by running the following commands in your terminal:
 
@@ -129,6 +129,9 @@ To start the backend server, run:
 npm run dev
 ```
 
+The server will start on http://localhost:5001. You can test the API endpoints using Postman or Swagger UI.
+
+# ----------------------------------------------
 ## Frontend Setup
 
 ### 1. Setting Up React
