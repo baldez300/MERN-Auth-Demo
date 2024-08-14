@@ -142,7 +142,9 @@ To start the backend server, run:
 npm run dev
 ```
 
-The server will start on http://localhost:5001. You can test the API endpoints using Postman or Swagger UI.
+The server will start on http://localhost:5001 and you should see the message `Server started on port 5001` in the VScode terminal.
+
+If MongoDB is connected successfully, you should see the message `MongoDB connected` in the terminal as well.
 
 # ----------------------------------------------
 ## Frontend Setup
@@ -153,8 +155,6 @@ React UI project open a new `terminal` and navigate to the frontend directory:
 
 ```bash
 cd frontend
-
-npm install
 
 npm install axios react-router-dom i18next react-i18next
 ```
