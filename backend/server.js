@@ -1,23 +1,28 @@
 // backend/server.js
 
+// This file is the main entry point for the backend server.
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from a .env file into process.env
 
 const app = express();
 
 connectDB();
 
+// Middleware to enable Cross-Origin Resource Sharing.
+// This allows the frontend to make HTTP requests to the backend.
 app.use(cors());
+
+// Middleware to parse the request body of the incoming requests.
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
-// Swagger Setup
+// Swagger Setup:  Defines the Swagger settings, including security and API details.
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -43,7 +48,11 @@ const swaggerOptions = {
   },
   apis: ['./routes/*.js'],
 };
+
+// Generates Swagger documentation based on the defined options and the route files.
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+// Serve the Swagger documentation to the /api-docs route.
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Here we define the port the app will run on in the backend.
