@@ -2,21 +2,27 @@
 
 const jwt = require('jsonwebtoken');
 
+// This is an Express middleware function. 
+// It will be called for each request to routes that require authentication.
+
 module.exports = function(req, res, next) {
-  // Get the token from the Authorization header
+
+  // The JWT is expected to be in the Authorization header in the format Bearer <token>.
   const authHeader = req.header('Authorization');
-  const token = authHeader && authHeader.split(' ')[1]; // Extract the token from the "Bearer <token>" format
+
+  // This code extracts the token by splitting the header value.
+  const token = authHeader && authHeader.split(' ')[1]; 
 
     // If no token is found, return an error response.
   if (!token) {
     return res.status(401).json({ msg: 'No token, authorization denied' });
   }
 
-  // Verify the token and extract the user information from it and attach it to the request object.
+  // The token is verified using the secret key stored in process.env.JWT_SECRET.
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded.user;
-    next();
+    next(); // Proceed to the protected route.
   } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
   }

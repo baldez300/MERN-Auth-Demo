@@ -1,11 +1,20 @@
 // backend/routes/auth.js
 
-const express = require('express');
+// express: Web framework for Node.js.
+// bcryptjs: Used for hashing and comparing passwords.
+// jsonwebtoken: Used for creating and verifying JWTs (JSON Web Tokens).
+// User: The User model, representing users in the MongoDB database.
+// authMiddleware: Middleware function for protecting routes.
+// router: An instance of an Express router, used to define routes.
+const express = require('express'); 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../middleware/auth');
 const router = express.Router();
+
+// The code includes Swagger annotations 
+// for automatically generating API documentation.
 
 /**
  * @swagger
@@ -63,6 +72,7 @@ router.post('/register', async (req, res) => {
     user = new User({ username, email, password });
     await user.save();
 
+    // A JWT is generated with the user's ID as the payload.
     const payload = { user: { id: user._id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.status(201).json({ token });
@@ -150,9 +160,14 @@ router.post('/login', async (req, res) => {
  *         description: Server error
  */
 
-// Protected Route Example
+// Example of a protected route that requires authentication.
+// The authMiddleware function is used to protect the route.
+// It ensures the request is authenticated by validating the JWT.
 router.get('/protected', authMiddleware, (req, res) => {
   res.json({ msg: 'This is a protected route. Welcome here after your token validation!' });
 });
+
+// This code defines three key routes for user authentication: 
+// registration, login, and accessing a protected route. 
 
 module.exports = router;

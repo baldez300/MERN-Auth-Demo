@@ -1,6 +1,6 @@
 {
     "welcome": "Tervetuloa etusivulle!",
-    "landingText": "Tervetuloa sovelluksen etusivulle! Voit helposti navigoida sovelluksessa valitsemalla valikko-kohteita ja muokata kokemustasi vaihtamalla kieltä.",
+    "mainText": "Tervetuloa sovelluksen etusivulle! Navigoi helposti sovelluksessa valitsemalla valikko-kohteita ja mukauta kokemustasi vaihtamalla kieltä.",
     "menuItem1": "Valikko 1",
     "menuItem2": "Valikko 2",
     "logout": "Kirjaudu ulos"

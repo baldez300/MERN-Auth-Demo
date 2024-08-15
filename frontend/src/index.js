@@ -10,6 +10,7 @@ import './i18n';
 const container = document.getElementById('root');
 const root = createRoot(container); // Create the root element
 
+// Render the App component inside the root element wrapped in the AuthProvider component.
 root.render(
   <AuthProvider>
     <App />

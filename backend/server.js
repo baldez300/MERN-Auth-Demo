@@ -5,10 +5,15 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+
+// Used for generating and serving API documentation.
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-require('dotenv').config(); // Load environment variables from a .env file into process.env
 
+// Load environment variables from a .env file into process.env
+require('dotenv').config();
+
+// Initialize the Express app.
 const app = express();
 
 connectDB();
@@ -17,9 +22,10 @@ connectDB();
 // This allows the frontend to make HTTP requests to the backend.
 app.use(cors());
 
-// Middleware to parse the request body of the incoming requests.
+// Middleware to parse the request body of the incoming requests as JSON objects.
 app.use(express.json());
 
+// Define the routes for the API endpoints.
 app.use('/api/auth', authRoutes);
 
 // Swagger Setup:  Defines the Swagger settings, including security and API details.
